@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import TaskInput from "./components/TaskInput";
-import TaskList from "./components/TaskList";
+
 import "./App.css";
 // Backend URL variable
 // const BACKEND_URL = "http://localhost:5000"; // for local development
