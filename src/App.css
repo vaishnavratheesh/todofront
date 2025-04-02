@@ -1,6 +1,8 @@
+/* Removed custom styles and replaced with Bulma classes */
 .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
 }
+/* No custom styles needed as Bulma provides responsive utilities */
