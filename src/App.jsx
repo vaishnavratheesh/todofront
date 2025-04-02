@@ -40,10 +40,26 @@ function App() {
     }
   };
 
+  // Update a task in the backend
+  const updateTask = async (id, updatedTask) => {
+    try {
+      const response = await axios.put(`${BACKEND_URL}/tasks/${id}`, {
+        task: updatedTask,
+      });
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task._id === id ? { ...task, task: response.data.task } : task
+        )
+      );
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
+  };
+
   return (
     <div className="app-container">
       <TaskInput addTask={addTask} />
-      <TaskList tasks={tasks} deleteTask={deleteTask} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask} />
     </div>
   );
 }
