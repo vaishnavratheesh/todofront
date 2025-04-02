@@ -10,9 +10,12 @@ function TaskList({ tasks, deleteTask, setTasks }) {
 
   const updateTask = async (id, updatedTask) => {
     try {
+      console.log("Sending update request:", { id, updatedTask });
       const response = await axios.put(`${BACKEND_URL}/tasks/${id}`, {
-        task: updatedTask, // Ensure this matches the backend's expected format
+        task: updatedTask,
       });
+      console.log("Response from backend:", response.data);
+
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task._id === id ? { ...task, task: response.data.task } : task
@@ -77,3 +80,8 @@ function TaskList({ tasks, deleteTask, setTasks }) {
 }
 
 export default TaskList;
+
+const cors = require('cors');
+app.use(cors());
+
+<TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask} />
