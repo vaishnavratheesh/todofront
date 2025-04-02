@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import TaskInput from "./components/TaskInput";
+import TaskList from "./components/TaskList";
 import "./App.css";
 // Backend URL variable
 // const BACKEND_URL = "http://localhost:5000"; // for local development
-const BACKEND_URL = "https://todoback-lzys.onrender.com"; // for deployment
+const BACKEND_URL = "https://to-do-list-backend-fe9a.onrender.com"; // for deployment
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -39,26 +40,10 @@ function App() {
     }
   };
 
-  // Update a task in the backend
-  const updateTask = async (id, updatedTask) => {
-    try {
-      const response = await axios.put(`${BACKEND_URL}/tasks/${id}`, {
-        task: updatedTask,
-      });
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task._id === id ? { ...task, task: response.data.task } : task
-        )
-      );
-    } catch (error) {
-      console.error("Error updating task:", error);
-    }
-  };
-
   return (
     <div className="app-container">
       <TaskInput addTask={addTask} />
-      <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }
