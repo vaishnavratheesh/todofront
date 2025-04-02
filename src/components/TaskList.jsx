@@ -81,7 +81,47 @@ function TaskList({ tasks, deleteTask, setTasks }) {
 
 export default TaskList;
 
+const express = require('express');
 const cors = require('cors');
-app.use(cors());
+const mongoose = require('mongoose');
 
-<TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask} />
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Example Task Schema
+const TaskSchema = new mongoose.Schema({
+  task: { type: String, required: true },
+});
+
+const Task = mongoose.model('Task', TaskSchema);
+
+// PUT /tasks/:id Endpoint
+app.put('/tasks/:id', async (req, res) => {
+  const { id } = req.params;
+  const { task } = req.body;
+
+  try {
+    const updatedTask = await Task.findByIdAndUpdate(
+      id,
+      { task },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    res.json({ task: updatedTask });
+  } catch (error) {
+    console.error('Error updating task:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Start the server
+const PORT = 5000;
+mongoose
+  .connect('mongodb://localhost:27017/todo', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+  .catch((error) => console.error('Database connection error:', error));
