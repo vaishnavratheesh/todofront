@@ -4,5 +4,9 @@
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text for contrast */
+  padding: 20px;
+  border-radius: 10px;
 }
 /* No custom styles needed as Bulma provides responsive utilities */
