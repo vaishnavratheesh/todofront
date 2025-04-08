@@ -1,0 +1,139 @@
+.task-list {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.task-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-text {
+  flex-grow: 1;
+  margin-right: 12px;
+  word-break: break-word;
+}
+
+.button-container {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.edit-input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 2px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.edit-input.error {
+  border-color: #dc3545;
+}
+
+.edit-input.error:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+.edit-error {
+  width: 100%;
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.edit-button {
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-button:hover {
+  background-color: #138496;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.save-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.no-tasks {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 20px;
+} 
