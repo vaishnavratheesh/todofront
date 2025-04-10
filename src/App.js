@@ -14,7 +14,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/tasks");
+      const response = await axios.get("https://todoback-6wax.onrender.com/tasks");
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -26,7 +26,7 @@ function App() {
     if (!newTask.trim()) return;
 
     try {
-      await axios.post("http://localhost:5000/tasks", { task: newTask });
+      await axios.post("https://todoback-6wax.onrender.com/tasks", { task: newTask });
       setNewTask("");
       fetchTasks();
     } catch (error) {
@@ -36,7 +36,7 @@ function App() {
 
   const handleDeleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/tasks/${id}`);
+      await axios.delete(`https://todoback-6wax.onrender.com/tasks/${id}`);
       fetchTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -50,7 +50,7 @@ function App() {
 
   const handleEditSubmit = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/tasks/${id}`, {
+      await axios.put(`https://todoback-6wax.onrender.com/tasks/${id}`, {
         task: editText,
       });
       setEditingTask(null);
